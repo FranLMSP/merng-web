@@ -5,6 +5,7 @@ import { Grid, Card, Icon, Label, Image, Button } from 'semantic-ui-react'
 
 import { AuthContext } from '../context/auth'
 import LikeButton from '../components/LikeButton'
+import DeleteButton from '../components/DeleteButton'
 
 const SinglePost = (props) => {
   const postId = props.match.params.postId
@@ -14,6 +15,10 @@ const SinglePost = (props) => {
       postId
     }
   })
+
+  const deletePostCallback = () => {
+    props.history.push('/')
+  }
 
   let PostMarkup
 
@@ -26,14 +31,14 @@ const SinglePost = (props) => {
     PostMarkup = (
       <Grid>
         <Grid.Row>
-          <Grid.Column width={2}>
+          <Grid.Column width={3}>
             <Image
               floated='right'
               size='small'
               src='https://react.semantic-ui.com/images/avatar/large/molly.png'
             />
           </Grid.Column>
-          <Grid.Column width={10}>
+          <Grid.Column width={13}>
             <Card fluid>
               <Card.Content>
                 <Card.Header>{ username }</Card.Header>
@@ -57,7 +62,9 @@ const SinglePost = (props) => {
                     {commentCount}
                   </Label>
                 </Button>
-
+                {user && user.username === username && (
+                  <DeleteButton callback={deletePostCallback} postId={postId} />
+                )}
               </Card.Content>
             </Card>
           </Grid.Column>
