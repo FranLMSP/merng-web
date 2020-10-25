@@ -13,6 +13,7 @@ export const useForm = (callback, initialState = {}) => {
   return {
     onChange,
     onSubmit,
-    values
+    values,
+    setValues
   }
 }
