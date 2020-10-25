@@ -7,10 +7,6 @@ const PostCard = ({ post: {id, username, body, likeCount, commentCount, createdA
   const likePost = () => {
   }
 
-  const commentOnPost = () => {
-
-  }
-
   return (
     <Card fluid>
       <Card.Content>
@@ -36,7 +32,7 @@ const PostCard = ({ post: {id, username, body, likeCount, commentCount, createdA
         </Button>
 
         <Button as='div' labelPosition='right'>
-          <Button color='blue' basic onClick={commentOnPost}>
+          <Button color='blue' basic as={Link} to={`/posts/${id}`}>
             <Icon name='comments' />
           </Button>
           <Label basic color='blue' pointing='left'>
